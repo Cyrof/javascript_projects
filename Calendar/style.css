@@ -1,84 +1,23 @@
-/*
-.container{
-    margin: auto;
-    width: 50%;
-    height: 600px;
-    border: 2px dotted blue;
-}
 
-.calendar{
-    border: 2px dotted red;
-    width: 40%;
-    margin: auto;
-    height: 50%;
-    margin-top: 15%;
-}
-
-.month{
-    text-align: center;
-    background-color: pink;
-}
-
-.btn {
-    margin: auto;
-}
-
-.prev{
-    float: left;
-}
-
-.next{
-    float: right;
-}
-
-.prev, .next{
-    margin-top: 10%;
-    font-size: 20px;
-    position: relative;
-}
-
-.content{
-    width: 70%;
-    margin: auto;
-}
-
-.content h1, p{
-    margin: 2%;
-}
-
-.days{
-    display: flex;
-}
-
-.days div{
-    width: 50%;
-    text-align: center;
-}
-
-.prev_date div{
-    display:inline;
-    border: 2px dotted black;
-}
-*/
-
-*{
-    margin: 0;
-    padding: 0;
+body{
     background-color: #10203b;
     color: white;
 }
 
 .container{
-    border: 2px dotted white;
-    width: 45%;
+    background-color: #212e2b;
+    width: 20%;
     height: 420px;
     margin: auto;
-    margin-top: 25%;
+    margin-top: 10%;
     
 }
 
+.month, span, h1, p{
+    background-color: #32b89d;
+}
+
 .month {
-    border: 2px dotted pink;
     display: flex;
     text-align: center;
 }
@@ -88,8 +27,55 @@
 }
 
 .prev, .next {
-    margin: auto 0;
+    margin: auto;
     width: 10%;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.date h1{
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.weekdays{
+    width: 100%;
+    display: flex;
+    padding: 0px;
+    margin-bottom: 20px;
+}
+
+.weekdays div{
+    width: calc(98% / 7);
+    text-align: center;
+}
+
+.days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days div{
+    text-align: center;
+    margin: auto;
+    width: calc(90% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 43px;
+}
+
+.days div:hover:not(.today){
+    background-color: #1a2422;
     cursor: pointer;
 }
 
+.today{
+    background-color: #32b89d;
+}
+
+.prev_date, .next_date{
+    opacity: 0.5;
+}
