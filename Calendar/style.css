@@ -64,7 +64,32 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: darkblue;
+    background-color: #10203b;
     color: white;
+}
+
+.container{
+    border: 2px dotted white;
+    width: 45%;
+    height: 420px;
+    margin: auto;
+    margin-top: 25%;
+    
+}
+
+.month {
+    border: 2px dotted pink;
+    display: flex;
+    text-align: center;
+}
+
+.date{
+    width: 90%;
+}
+
+.prev, .next {
+    margin: auto 0;
+    width: 10%;
+    cursor: pointer;
 }
 
