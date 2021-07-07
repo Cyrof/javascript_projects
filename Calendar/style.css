@@ -1,0 +1,70 @@
+/*
+.container{
+    margin: auto;
+    width: 50%;
+    height: 600px;
+    border: 2px dotted blue;
+}
+
+.calendar{
+    border: 2px dotted red;
+    width: 40%;
+    margin: auto;
+    height: 50%;
+    margin-top: 15%;
+}
+
+.month{
+    text-align: center;
+    background-color: pink;
+}
+
+.btn {
+    margin: auto;
+}
+
+.prev{
+    float: left;
+}
+
+.next{
+    float: right;
+}
+
+.prev, .next{
+    margin-top: 10%;
+    font-size: 20px;
+    position: relative;
+}
+
+.content{
+    width: 70%;
+    margin: auto;
+}
+
+.content h1, p{
+    margin: 2%;
+}
+
+.days{
+    display: flex;
+}
+
+.days div{
+    width: 50%;
+    text-align: center;
+}
+
+.prev_date div{
+    display:inline;
+    border: 2px dotted black;
+}
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: darkblue;
+    color: white;
+}
+
