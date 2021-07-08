@@ -1,3 +1,48 @@
+/*make div clickable*/
+function clickDate(event){
+    // var e to store text content of clicked date
+    var e = event.target.id;
+    //get all child from div .days
+    var all = document.querySelector(".days").children;
+
+    //for loop to find current today date and remove highlight
+    for(x = 0; x < all.length; x++){
+        if(all[x].className === 'today'){
+            var id = all[x].id
+            var change1 = document.querySelector(`[id=${CSS.escape(id)}]`);
+            change1.classList.remove(`${all[x].className}`); 
+            break;
+        }
+    }
+
+    //for loop to find new clicked date and set it to highlighted date
+    for(i = 0; i < all.length; i++){
+        if(all[i].id === e){
+            var newid = all[i].id;
+            var change2 = document.querySelector(`[id=${CSS.escape(newid)}]`);
+            change2.classList.add("today");
+            break;
+        }
+    }
+
+    /*
+    for(j = 0; j < all.length; j++){
+        if(all[j].className.includes("next") && all[j].className.includes("today")){
+            set('next');
+        }
+        else{
+            set('prev');
+        }
+    }
+    */
+
+
+
+} 
+
+set('next');
+
+
 /*make calendar hiddem*/
 function hide(){
     var x = document.querySelector(".container");
@@ -61,21 +106,22 @@ var calendarScript = () =>{
 
     //for loop to get prev month dates
     for(x = firstDayOfMonthIndex; x > 0; x--){
-        days += `<div class="prev_date">${prevLast - x + 1}</div>`;
+        var prev = prevLast - x + 1;
+        days += `<div class="prev_date" id='prev-${prev}'>${prev}</div>`;
     }
     
     // for loop to get the current month dates
     for(i = 1; i <= daysInMonth; i++){
         if(i === compareDate.getDate() && date.getMonth() === compareDate.getMonth()){
-            days += `<div class="today">${i}</div>`;
+            days += `<div class="today" id="current-${i}">${i}</div>`;
         }else{
-            days += `<div>${i}</div>`;
+            days += `<div id="current-${i}">${i}</div>`;
         }
     }
     
     // for loop to get next months dates
     for(j = 1; j <= nextDays; j++){
-        days += `<div class="next_date">${j}</div>`;
+        days += `<div class="next_date" id="next-${j}">${j}</div>`;
         dayInCurrentMonth.innerHTML = days;
     }
 }
@@ -97,3 +143,4 @@ if(next !== "null"){
 }
 
 calendarScript();
+
