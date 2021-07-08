@@ -79,3 +79,8 @@ body{
 .prev_date, .next_date{
     opacity: 0.5;
 }
+
+.calendar-btn i{
+    font-size: 25px;
+    cursor: pointer;
+}

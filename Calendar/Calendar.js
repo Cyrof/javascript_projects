@@ -1,3 +1,16 @@
+/*make calendar hiddem*/
+function hide(){
+    var x = document.querySelector(".container");
+    if (x.style.display ==="none"){
+        x.style.display = "block";
+    } else{
+        x.style.display = "none";
+    }
+}
+
+
+/*Calendar*/ 
+
 //create date obj
 var date = new Date();
 
