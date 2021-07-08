@@ -40,7 +40,6 @@ function clickDate(event){
 
 } 
 
-set('next');
 
 
 /*make calendar hiddem*/
