@@ -1,61 +1,120 @@
+//function to check if current month is same as system current month 
+function check(){
+    
+}
 
-/*make div clickable*/
-function clickDate(event) {
-    try {
-        // var e to store text content of clicked date
-        var e = event.target.id;
-    } catch (e) {
-        console.log(TypeError);
-    }
-    //get all child from div .days
+//function to get the date from the clicked div
+function setDateforCal() {
     var all = document.querySelector(".days").children;
 
-    //for loop to find current today date and remove highlight
-    for (x = 0; x < all.length; x++) {
-        if (all[x].className.includes('today')) {
-            var id = all[x].id
+    for (p = 0; p < all.length; p++) {
+        if (all[p].className.includes('today')) {
+            var divtext = document.querySelector(`[id=${CSS.escape(all[p].id)}]`);
+            divtext = divtext.textContent;
+            break;
+        }
+    }
+    return divtext;
+}
+
+//function to set date for the calendar
+var currentDate = new Date();
+function disDate() {
+    var calendarDate = document.querySelector('.date p');
+    calendarDate.innerHTML = currentDate.toDateString();
+}
+
+/* set the class of the clicked div to today */
+function setToday(e) {
+
+
+    // get the children from .days div 
+    var child = document.querySelector(".days").children;
+
+    //for loop to find which div contains class = "today" and remove it 
+    for (x = 0; x < child.length; x++) {
+        if (child[x].className.includes('today')) {
+            var id = child[x].id;
             var change1 = document.querySelector(`[id=${CSS.escape(id)}]`);
-            change1.classList.remove(`${all[x].className}`);
+            change1.classList.remove(`${child[x].className}`);
             break;
         }
     }
 
-    //for loop to find new clicked date and set it to highlighted date
-    for (i = 0; i < all.length; i++) {
-        if (all[i].id === e) {
-            var newid = all[i].id;
+    //for loop to find which div is clicked and set the class to .today
+    for (i = 0; i < child.length; i++) {
+        if (child[i].id === e) {
+            var newid = child[i].id;
             var change2 = document.querySelector(`[id=${CSS.escape(newid)}]`);
-            change2.classList.add("today");
+            change2.classList.add('today');
             break;
         }
     }
+}
 
+//function to move the months if prev or next month dates were clicked
+function moveToNextMonth(e) {
+    var datenow = setDateforCal();
 
+    //get the children of .days div
+    var all = document.querySelector(".days").children;
+
+    //for loop to check if next or prev month dates are clicked then move accordingly
     for (j = 0; j < all.length; j++) {
+        // if else to check if the date clicked is next or prev months
         if (all[j].className.includes('today') && all[j].className.includes('next')) {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            currentDate.setDate(datenow);
+            disDate();
             date.setMonth(date.getMonth() + 1);
             calendarScript();
             setnewtoday(all, e);
         }
         else if (all[j].className.includes('today') && all[j].className.includes('prev')) {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            currentDate.setDate(datenow);
+            disDate();
             date.setMonth(date.getMonth() - 1);
             calendarScript();
             setnewtoday(all, e);
         }
+        else {
+            currentDate.setMonth(new Date().getMonth());
+            currentDate.setDate(datenow);
+            disDate();
+        }
     }
 }
 
+
+/*make div clickable*/
+function clickDate(event) {
+    try {
+        // var e to store text content of clicked date
+        var e_id = event.target.id;
+    } catch (e_id) {
+        console.log(TypeError);
+    }
+
+    if (e_id !== "") {
+        setToday(e_id);
+        moveToNextMonth(e_id);
+    }
+}
+
+//function to set .today class if the current month already has a .today class in another div
 function setnewtoday(list, e) {
+    //if else statement to check if the div id contains keyword "prev" or "next"
     if (e.includes('prev')) {
         e = e.replace('prev', 'current');
-        console.log(e);
     }
     else if (e.includes('next')) {
         e = e.replace('next', 'current');
-        console.log(e);
     }
 
-    for (j = 0; j < list.length; i++) {
+    //for loop to check if any child div contains .today class
+    for (j = 0; j < list.length; j++) {
+        // if else to check if div contains .today class then set choice to boolean expression
         if (list[j].className.includes('today')) {
             var choice = true;
             break;
@@ -64,6 +123,7 @@ function setnewtoday(list, e) {
         }
     }
 
+    // if else to check if choice is true then set clicked date to .today class
     if (choice !== true) {
         for (i = 0; i < list.length; i++) {
             if (list[i].id === e) {
@@ -74,11 +134,14 @@ function setnewtoday(list, e) {
             }
         }
     }
+    else {
+        setToday(e);
+    }
 }
 
 
 
-/*make calendar hiddem*/
+/*make calendar hidden*/
 function hide() {
     var x = document.querySelector(".container");
     if (x.style.display === "none") {
@@ -89,14 +152,12 @@ function hide() {
 }
 
 
+
+
 /*Calendar*/
 
 //create date obj
 var date = new Date();
-
-
-
-
 var calendarScript = () => {
     date.setDate(1);
 
@@ -134,7 +195,7 @@ var calendarScript = () => {
 
     //set .date h1  and .date p text to month dynamically using js
     document.querySelector(".date h1").innerHTML = months[monthIndex];
-    document.querySelector(".date p").innerHTML = new Date().toDateString();
+    disDate();
 
     //set days to empty string
     var days = "";
@@ -182,4 +243,3 @@ if (next !== "null") {
 
 
 calendarScript();
-
