@@ -4,7 +4,7 @@ function clickDate(event) {
     try {
         // var e to store text content of clicked date
         var e = event.target.id;
-    } catch (e){
+    } catch (e) {
         console.log(TypeError);
     }
     //get all child from div .days
@@ -35,18 +35,45 @@ function clickDate(event) {
         if (all[j].className.includes('today') && all[j].className.includes('next')) {
             date.setMonth(date.getMonth() + 1);
             calendarScript();
-            clickDate();
+            setnewtoday(all, e);
         }
         else if (all[j].className.includes('today') && all[j].className.includes('prev')) {
             date.setMonth(date.getMonth() - 1);
             calendarScript();
-            clickDate();
+            setnewtoday(all, e);
+        }
+    }
+}
+
+function setnewtoday(list, e) {
+    if (e.includes('prev')) {
+        e = e.replace('prev', 'current');
+        console.log(e);
+    }
+    else if (e.includes('next')) {
+        e = e.replace('next', 'current');
+        console.log(e);
+    }
+
+    for (j = 0; j < list.length; i++) {
+        if (list[j].className.includes('today')) {
+            var choice = true;
+            break;
+        } else {
+            choice = false;
         }
     }
 
-
-
-
+    if (choice !== true) {
+        for (i = 0; i < list.length; i++) {
+            if (list[i].id === e) {
+                var id = list[i].id;
+                var newtoday = document.querySelector(`[id=${CSS.escape(id)}]`);
+                newtoday.classList.add('today');
+                break;
+            }
+        }
+    }
 }
 
 
