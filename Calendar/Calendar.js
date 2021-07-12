@@ -1,6 +1,18 @@
 //function to check if current month is same as system current month 
 function check(){
-    
+    var allchild = document.querySelector(".days").children;
+
+    if (date.getMonth() === new Date().getMonth()){
+        for(f = 0; f < allchild.length; f++){
+            if (allchild[f].className.includes('today')){
+                var selectchild = document.querySelector(`[id=${CSS.escape(allchild[f].id)}]`);
+                currentDate.setMonth(new Date().getMonth());
+                currentDate.setDate(selectchild.textContent);
+                calendarScript();
+                break;
+            }
+        }
+    }
 }
 
 //function to get the date from the clicked div
@@ -63,7 +75,7 @@ function moveToNextMonth(e) {
     for (j = 0; j < all.length; j++) {
         // if else to check if the date clicked is next or prev months
         if (all[j].className.includes('today') && all[j].className.includes('next')) {
-            currentDate.setMonth(currentDate.getMonth() + 1);
+            currentDate.setMonth(date.getMonth() + 1);
             currentDate.setDate(datenow);
             disDate();
             date.setMonth(date.getMonth() + 1);
@@ -71,7 +83,7 @@ function moveToNextMonth(e) {
             setnewtoday(all, e);
         }
         else if (all[j].className.includes('today') && all[j].className.includes('prev')) {
-            currentDate.setMonth(currentDate.getMonth() - 1);
+            currentDate.setMonth(date.getMonth() - 1);
             currentDate.setDate(datenow);
             disDate();
             date.setMonth(date.getMonth() - 1);
@@ -227,6 +239,7 @@ if (prev !== "null") {
     prev.addEventListener('click', function () {
         date.setMonth(date.getMonth() - 1);
         calendarScript();
+        check();
     })
 }
 
@@ -237,6 +250,7 @@ if (next !== "null") {
     next.addEventListener('click', function () {
         date.setMonth(date.getMonth() + 1);
         calendarScript();
+        check();
     })
 }
 
