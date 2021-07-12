@@ -1,10 +1,18 @@
+//function to check click
+function checkclick(){
+    /* if (clickDate){
+        console.log('hi');
+    } */
+}
+
 //function to check if current month is same as system current month 
-function check(){
+function check() {
     var allchild = document.querySelector(".days").children;
 
-    if (date.getMonth() === new Date().getMonth()){
-        for(f = 0; f < allchild.length; f++){
-            if (allchild[f].className.includes('today')){
+    // check if month is same as current system month 
+    if (date.getMonth() === new Date().getMonth()) {
+        for (f = 0; f < allchild.length; f++) {
+            if (allchild[f].className.includes('today')) {
                 var selectchild = document.querySelector(`[id=${CSS.escape(allchild[f].id)}]`);
                 currentDate.setMonth(new Date().getMonth());
                 currentDate.setDate(selectchild.textContent);
@@ -91,7 +99,7 @@ function moveToNextMonth(e) {
             setnewtoday(all, e);
         }
         else {
-            currentDate.setMonth(new Date().getMonth());
+            currentDate.setMonth(date.getMonth());
             currentDate.setDate(datenow);
             disDate();
         }
@@ -111,6 +119,7 @@ function clickDate(event) {
     if (e_id !== "") {
         setToday(e_id);
         moveToNextMonth(e_id);
+        write();
     }
 }
 
@@ -142,6 +151,9 @@ function setnewtoday(list, e) {
                 var id = list[i].id;
                 var newtoday = document.querySelector(`[id=${CSS.escape(id)}]`);
                 newtoday.classList.add('today');
+                /* currentDate.setDate(newtoday.textContent);
+                currentDate.setMonth(date.getMonth());
+                calendarScript(); */
                 break;
             }
         }
@@ -235,25 +247,67 @@ var calendarScript = () => {
 }
 
 var prev = document.querySelector(".prev");
-if (prev !== "null") {
+prev.addEventListener('click', prevfunc);
+
+function prevfunc() {
+    currentDate.setMonth(date.getMonth() - 1);
+    date.setMonth(date.getMonth() - 1);
+    calendarScript();
+    check();
+    checkclick();
+}
+/* if (prev !== "null") {
     prev.addEventListener('click', function () {
+        currentDate.setMonth(date.getMonth() - 1);
         date.setMonth(date.getMonth() - 1);
         calendarScript();
         check();
     })
-}
+} */
 
 
 
 var next = document.querySelector(".next");
-if (next !== "null") {
+next.addEventListener('click', nextfunc);
+
+function nextfunc() {
+    currentDate.setMonth(date.getMonth() + 1);
+    date.setMonth(date.getMonth() + 1);
+    calendarScript();
+    check();
+    checkclick();
+}
+/* if (next !== "null") {
     next.addEventListener('click', function () {
+        currentDate.setMonth(date.getMonth() + 1);
         date.setMonth(date.getMonth() + 1);
         calendarScript();
         check();
     })
-}
+} */
 
 
 
 calendarScript();
+
+function write() {
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    var input = document.querySelector('.form-container input');
+    /* var currentnow = currentDate.toString();
+    console.log(currentnow); */
+
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+    var format = day + '/' + month + '/' + year;
+
+    input.value = format;
+}
+
+
