@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Facilities</title>
+</head>
+
+<body>
+    <div class="slideshow-container">
+
+        <div class="myslides">
+            <img src="./Facility/Indoor Pool 2.jpg">
+            <div class="text">Description of Facility</div>
+        </div>
+
+        <div class="myslides">
+            <img src="./Facility/Outdoor Pool.jpg">
+        </div>
+
+        <div class="myslides">
+            <img src="./Facility/Indoor Pool.jpg">
+        </div>
+
+        <a class="prev" onclick="Click(-1)">&#10094;</a>
+        <a class="next" onclick="Click(1)">&#10095;</a>
+
+    </div>
+    <div style="text-align: center">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+
+    
+
+    <script src="./slideshow.js"></script>
+</body>
+
+</html>
