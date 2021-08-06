@@ -137,7 +137,7 @@
     position: absolute;
     bottom: 14%;
     margin-left: 0.5%;
-    display: none;
+    display: block;
 }
 
 /* calendar exit button */
@@ -148,4 +148,31 @@
     text-decoration: none;
     margin-right: 5px;
     cursor: pointer;
+}
+
+/* set mont container position */
+.month-container{
+    margin: 23px;
+    height: 327px;
+}
+
+/* set two calendar month position */
+.month-one{
+    float: left;
+}
+
+.month-two{
+    float: right;
+}
+
+/* set th width */
+.month-container th{
+    width: 34px;
+}
+
+/* set arrow size */
+.prev, .next{
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bolder;
 }

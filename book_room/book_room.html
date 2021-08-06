@@ -48,6 +48,49 @@
             <!-- calendar -->
             <div class="calendar">
                 <a id="calendar-exit" onclick="showCalendar(0)">&#x2715;</a>
+
+                <!-- month container -->
+                <div class="month-container">
+                    <!-- first month calendar -->
+                    <table class="month-one">
+                        <thead>
+                            <tr class="caption">
+                                <th><a class="prev">&#60;</a></th>
+                                <th colspan="5" id="month-one">August</th>
+                                <th></th>
+                            </tr>
+                            <tr class="weekday">
+                                <th>MO</th>
+                                <th>TU</th>
+                                <th>WE</th>
+                                <th>TH</th>
+                                <th>FR</th>
+                                <th>SA</th>
+                                <th>SU</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <!-- second month calendar -->
+                    <table class="month-two">
+                        <thead>
+                            <tr class="caption">
+                                <th></th>
+                                <th colspan="5" id="month-two">September</th>
+                                <th><a class="next">&#62;</a></th>
+                            </tr>
+                            <tr class="weekday">
+                                <th>MO</th>
+                                <th>TU</th>
+                                <th>WE</th>
+                                <th>TH</th>
+                                <th>FR</th>
+                                <th>SA</th>
+                                <th>SU</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
 
