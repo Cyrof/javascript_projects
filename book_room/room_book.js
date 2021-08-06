@@ -13,11 +13,16 @@ function hideBookIn(){
 //function to show/hide calendar
 function showCalendar(num){
     var click = document.getElementsByClassName("calendar");
-    click.style.display = "block";
-    // if (num === 0){
-    //     click.style.display = "none";
-    // }
-    // else{
-    //     click.style.display = "block";
-    // }
+    if (num === 0){
+        click[0].style.display = "none";
+    }
+    else{
+        click[0].style.display = "block";
+    }
+}
+
+window.addEventListener("click", check());
+
+function check(){
+    alert("clicked!");
 }
