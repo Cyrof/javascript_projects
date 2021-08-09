@@ -137,7 +137,7 @@
     position: absolute;
     bottom: 14%;
     margin-left: 0.5%;
-    display: block;
+    display: none;
 }
 
 /* calendar exit button */
